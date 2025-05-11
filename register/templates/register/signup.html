@@ -1,0 +1,51 @@
+{% extends 'backend/base.html' %} {% load static %} {% block content %}
+<header class="py-12 text-center">
+  <h1
+    class="flex justify-center mx-auto mb-8 text-3xl"
+    style="font-family: Oxygen Mono, monospace"
+  >
+    CREEZ UN COMPTE
+  </h1>
+  <!-- formulaire de login -->
+  <form
+    class="fieldest mx-auto bg-base-200 border-base-300 rounded-box w-xs border p-4"
+    method="post"
+    action=""
+  >
+    {% csrf_token %}
+    <legend class="fieldset-legend">Login</legend>
+
+    <label class="label">Nom</label>
+    <input type="Name" class="input" placeholder="Votre nom" />
+
+    <label class="label">Email</label>
+    <input type="email" class="input" placeholder="Votre Email" />
+
+    <label class="label">Mot de passe</label>
+    <input type="password1" class="input" placeholder="Mot de passe" />
+
+    <label class="label">Mot de passe</label>
+    <input
+      type="password2"
+      class="input"
+      placeholder="Confirmez votre mot de passe"
+    />
+
+    <button class="btn btn-outline btn-primary mt-4">S'enregistrer</button>
+  </form>
+  <!-- LIGNE DE SÉPARATION "OR" -->
+  <div class="flex mx-auto w-xl items-center mt-3 mb-3">
+    <hr class="flex-grow border-neutral-300 border-b-1" />
+    <p class="mx-4 text-neutral-300 text-xl">or</p>
+    <hr class="flex-grow border-neutral-300 border-b-1" />
+    <hr />
+  </div>
+  <!-- LIEN POUR S'INSCRIRE avec GOOGLE -->
+  {% load socialaccount %}
+  <a href="{% provider_login_url 'google' process='signup' %}">
+    <button class="btn btn-outline mt-4">
+      <i class="bx bxl-google"></i> s'inscrire avec Google
+    </button>
+  </a>
+</header>
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends 'backend/base.html' %}
+<!-- charge les templates -->
+{% load static %}
+<!-- charge le compte google -->
+
+<!-- charge le compte google -->
+
+<!--  debut de la session login -->
+
+{% block content %}
+<header class="py-12 text-center">
+  <h1
+    class="flex justify-center mx-auto mb-8 text-3xl"
+    style="font-family: Oxygen Mono, monospace"
+  >
+    SE CONNECTER
+  </h1>
+  <!-- formulaire de login -->
+  <form
+    class="fieldest mx-auto bg-base-200 border-base-300 rounded-box w-xs border p-4"
+    method="post"
+    action=""
+  >
+    {% csrf_token %}
+    <!-- token de sécurité pour éviter les attaques CSRF -->
+    <legend class="fieldset-legend">login</legend>
+
+    <label class="label">Email</label>
+    <input type="email" class="input" placeholder="Email" />
+
+    <label class="label">Mot de passe</label>
+    <input type="password" class="input" placeholder="Mot de passe" />
+
+    <button class="btn btn-outline btn-primary mt-4">Se connecter</button>
+  </form>
+  <!-- LIGNE DE SÉPARATION "OR" -->
+  <div class="flex mx-auto w-xl items-center mt-3 mb-3">
+    <hr class="flex-grow border-neutral-300 border-b-1" />
+    <p class="mx-4 text-neutral-300 text-xl">or</p>
+    <hr class="flex-grow border-neutral-300 border-b-1" />
+    <hr />
+  </div>
+  <!-- LIEN POUR S'INSCRIRE avec GOOGLE -->
+  {% load socialaccount %}
+  <a href="{% provider_login_url 'google'%}">
+    <button class="btn btn-outline mt-4">
+      <i class="bx bxl-google"></i> Se connecter avec Google
+    </button>
+  </a>
+</header>
+{% endblock content %}
